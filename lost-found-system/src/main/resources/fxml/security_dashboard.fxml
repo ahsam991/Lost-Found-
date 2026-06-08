@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.campus.lostfound.controller.SecurityDashboardController" 
+            prefWidth="1100.0" prefHeight="800.0" style="-fx-background-color: #f9f9ff;">
+    
+    <!-- Left Navigation Bar -->
+    <left>
+        <VBox spacing="16" styleClass="side-nav" prefWidth="240.0">
+            <padding>
+                <Insets top="30" right="20" bottom="30" left="20"/>
+            </padding>
+            <children>
+                <VBox spacing="4" style="-fx-padding: 0 0 20 0;">
+                    <Label text="Smart Campus" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #006c49;"/>
+                    <Label text="Security &amp; Handovers" style="-fx-font-size: 11px; -fx-text-fill: #6B7280; -fx-font-family: 'JetBrains Mono';"/>
+                </VBox>
+                
+                <VBox spacing="8" VBox.vgrow="ALWAYS">
+                    <Button text="Verification Queue" styleClass="nav-link, nav-link-active" maxWidth="Infinity"/>
+                    <Button text="Scan Pick-up QR" onAction="#handleOpenScanner" styleClass="nav-link" maxWidth="Infinity"/>
+                    <Button text="Handovers History" styleClass="nav-link" maxWidth="Infinity"/>
+                </VBox>
+                
+                <VBox spacing="10">
+                    <Label fx:id="lblOfficerName" text="Security Officer" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <Button text="Log Out" onAction="#handleLogout" styleClass="button-secondary" maxWidth="Infinity"/>
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+    
+    <!-- Center Dashboard Queue -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background-insets: 0;">
+            <content>
+                <VBox spacing="24" style="-fx-padding: 30px;">
+                    
+                    <!-- Title Bar -->
+                    <HBox alignment="CENTER_LEFT" spacing="20">
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Security Command Dashboard" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                            <Label text="Review claim requests, compare proofs, and scan pick-up QR passes." style="-fx-text-fill: #6B7280;"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- QR Scanner Card -->
+                    <VBox spacing="12" styleClass="card" style="-fx-border-color: #006c49;">
+                        <Label text="Physical Handover: Verify QR Pass" styleClass="heading-sm" style="-fx-text-fill: #006c49;"/>
+                        <HBox spacing="16" alignment="CENTER_LEFT">
+                            <Button text="Select QR Code Pass Image File..." onAction="#handleScanQRFile" styleClass="button-secondary" />
+                            <Label fx:id="lblScanStatus" text="No QR code scanned yet." style="-fx-text-fill: #6B7280;"/>
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Button text="Complete Handover" fx:id="btnCompleteHandover" onAction="#handleCompleteHandover" styleClass="button-primary" disable="true" style="-fx-background-color: #006c49;"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Main Split View -->
+                    <GridPane hgap="20" vgap="20">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="50"/>
+                            <ColumnConstraints percentWidth="50"/>
+                        </columnConstraints>
+                        <children>
+                            
+                            <!-- Left: Claims list -->
+                            <VBox spacing="12" GridPane.columnIndex="0" styleClass="card">
+                                <Label text="Pending Verification Claims" styleClass="heading-sm"/>
+                                <TableView fx:id="tblClaimsQueue" prefHeight="400.0">
+                                    <columns>
+                                        <TableColumn fx:id="colQueueId" text="ID" prefWidth="50"/>
+                                        <TableColumn fx:id="colQueueClaimant" text="Claimant ID" prefWidth="100"/>
+                                        <TableColumn fx:id="colQueueItem" text="Found Item" prefWidth="150"/>
+                                        <TableColumn fx:id="colQueueStatus" text="Status" prefWidth="120"/>
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                            
+                            <!-- Right: Verification detail pane -->
+                            <VBox spacing="12" GridPane.columnIndex="1" styleClass="card" fx:id="paneVerificationDetails" disable="true">
+                                <Label text="Claim Review Details" styleClass="heading-sm"/>
+                                <Separator />
+                                
+                                <GridPane vgap="8" hgap="10">
+                                    <columnConstraints>
+                                        <ColumnConstraints prefWidth="120"/>
+                                        <ColumnConstraints hgrow="ALWAYS"/>
+                                    </columnConstraints>
+                                    <children>
+                                        <Label text="Claim ID:" style="-fx-font-weight: bold;" GridPane.rowIndex="0"/>
+                                        <Label fx:id="lblDetailId" text="-" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                        
+                                        <Label text="Claimant ID:" style="-fx-font-weight: bold;" GridPane.rowIndex="1"/>
+                                        <Label fx:id="lblDetailClaimant" text="-" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                                        <Label text="Found Item Title:" style="-fx-font-weight: bold;" GridPane.rowIndex="2"/>
+                                        <Label fx:id="lblDetailItemTitle" text="-" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                                        <Label text="Proof uploaded:" style="-fx-font-weight: bold;" GridPane.rowIndex="3"/>
+                                        <Label fx:id="lblDetailProof" text="-" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                    </children>
+                                </GridPane>
+                                
+                                <Separator />
+                                <Label text="Security Answers:" style="-fx-font-weight: bold;"/>
+                                <TextArea fx:id="txtDetailAnswers" prefHeight="100.0" editable="false" wrapText="true" style="-fx-background-color: #f9f9ff;"/>
+                                
+                                <Separator />
+                                <Label text="Officer Notes &amp; Verification Details *" style="-fx-font-weight: bold;"/>
+                                <TextField fx:id="txtOfficerNotes" promptText="Enter notes regarding matching criteria or checks performed..."/>
+                                
+                                <HBox spacing="12" alignment="CENTER_RIGHT">
+                                    <Button text="Request More Info" onAction="#handleRequestInfo" styleClass="button-secondary" />
+                                    <Button text="Approve Claim" onAction="#handleApproveClaim" styleClass="button-primary" style="-fx-background-color: #2563eb;" />
+                                </HBox>
+                            </VBox>
+                            
+                        </children>
+                    </GridPane>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

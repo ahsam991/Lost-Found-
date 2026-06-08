@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.campus.lostfound.controller.AdminDashboardController" 
+            prefWidth="1100.0" prefHeight="800.0" style="-fx-background-color: #f9f9ff;">
+    
+    <!-- Left Navigation Bar -->
+    <left>
+        <VBox spacing="16" styleClass="side-nav" prefWidth="240.0">
+            <padding>
+                <Insets top="30" right="20" bottom="30" left="20"/>
+            </padding>
+            <children>
+                <VBox spacing="4" style="-fx-padding: 0 0 20 0;">
+                    <Label text="Smart Campus" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #004ac6;"/>
+                    <Label text="Administration Panel" style="-fx-font-size: 11px; -fx-text-fill: #6B7280; -fx-font-family: 'JetBrains Mono';"/>
+                </VBox>
+                
+                <VBox spacing="8" VBox.vgrow="ALWAYS">
+                    <Button text="Dashboard Overview" styleClass="nav-link, nav-link-active" maxWidth="Infinity"/>
+                    <Button text="System Users" styleClass="nav-link" maxWidth="Infinity"/>
+                    <Button text="All Item Records" styleClass="nav-link" maxWidth="Infinity"/>
+                    <Button text="Claim Submissions" styleClass="nav-link" maxWidth="Infinity"/>
+                </VBox>
+                
+                <VBox spacing="10">
+                    <Label fx:id="lblAdminName" text="Administrator" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <Button text="Log Out" onAction="#handleLogout" styleClass="button-secondary" maxWidth="Infinity"/>
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+    
+    <!-- Center Dashboard Canvas -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background-insets: 0;">
+            <content>
+                <VBox spacing="24" style="-fx-padding: 30px;">
+                    
+                    <!-- Title Bar -->
+                    <HBox alignment="CENTER_LEFT" spacing="20">
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Admin Dashboard" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                            <Label text="Monitor campus activities, view analytics trends, and compile PDF logs." style="-fx-text-fill: #6B7280;"/>
+                        </VBox>
+                        <Button text="Export System Report (PDF)" onAction="#handleGeneratePDF" styleClass="button-primary" style="-fx-background-color: #006c49; -fx-text-fill: white;" />
+                    </HBox>
+
+                    <!-- Analytics Counters -->
+                    <GridPane hgap="16" vgap="16">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="20" />
+                            <ColumnConstraints percentWidth="20" />
+                            <ColumnConstraints percentWidth="20" />
+                            <ColumnConstraints percentWidth="20" />
+                            <ColumnConstraints percentWidth="20" />
+                        </columnConstraints>
+                        <children>
+                            <VBox spacing="6" styleClass="card" GridPane.columnIndex="0">
+                                <Label text="Total Users" style="-fx-font-size: 12px; -fx-text-fill: #6B7280;"/>
+                                <Label fx:id="totalUsersLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                            </VBox>
+                            <VBox spacing="6" styleClass="card" GridPane.columnIndex="1">
+                                <Label text="Lost Items Reported" style="-fx-font-size: 12px; -fx-text-fill: #6B7280;"/>
+                                <Label fx:id="lostItemsLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                            </VBox>
+                            <VBox spacing="6" styleClass="card" GridPane.columnIndex="2">
+                                <Label text="Found Items Stored" style="-fx-font-size: 12px; -fx-text-fill: #6B7280;"/>
+                                <Label fx:id="foundItemsLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                            </VBox>
+                            <VBox spacing="6" styleClass="card" GridPane.columnIndex="3">
+                                <Label text="Pending Claims" style="-fx-font-size: 12px; -fx-text-fill: #6B7280;"/>
+                                <Label fx:id="pendingClaimsLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                            </VBox>
+                            <VBox spacing="6" styleClass="card" GridPane.columnIndex="4">
+                                <Label text="Recovery Rate" style="-fx-font-size: 12px; -fx-text-fill: #6B7280;"/>
+                                <Label fx:id="recoveryRateLabel" text="0.0%" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2563eb;"/>
+                            </VBox>
+                        </children>
+                    </GridPane>
+
+                    <!-- Charts Area -->
+                    <GridPane hgap="20" vgap="20">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="45"/>
+                            <ColumnConstraints percentWidth="55"/>
+                        </columnConstraints>
+                        <children>
+                            <VBox spacing="10" styleClass="card" GridPane.columnIndex="0">
+                                <Label text="Items by Category" styleClass="heading-sm"/>
+                                <PieChart fx:id="categoryChart" prefHeight="250.0" legendSide="BOTTOM" />
+                            </VBox>
+                            
+                            <VBox spacing="10" styleClass="card" GridPane.columnIndex="1">
+                                <Label text="Weekly Reporting Trend (Last 30 Days)" styleClass="heading-sm"/>
+                                <LineChart fx:id="trendChart" prefHeight="250.0" createSymbols="true">
+                                    <xAxis><CategoryAxis label="Date"/></xAxis>
+                                    <yAxis><NumberAxis label="Count"/></yAxis>
+                                </LineChart>
+                            </VBox>
+                        </children>
+                    </GridPane>
+
+                    <!-- Claims Table -->
+                    <VBox spacing="12" styleClass="card">
+                        <Label text="Recent Claim Requests" styleClass="heading-sm"/>
+                        <TableView fx:id="claimsTable" prefHeight="200.0">
+                            <columns>
+                                <TableColumn fx:id="colClaimId" text="Claim ID" prefWidth="90" />
+                                <TableColumn fx:id="colClaimant" text="Claimant ID" prefWidth="120" />
+                                <TableColumn fx:id="colFoundItem" text="Found Item ID" prefWidth="120" />
+                                <TableColumn fx:id="colStatus" text="Status" prefWidth="150" />
+                                <TableColumn fx:id="colCreatedAt" text="Submitted At" prefWidth="180" />
+                            </columns>
+                        </TableView>
+                    </VBox>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

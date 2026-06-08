@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.campus.lostfound.controller.StudentDashboardController" 
+            prefWidth="1100.0" prefHeight="800.0" style="-fx-background-color: #f9f9ff;">
+    
+    <!-- Left Navigation Bar -->
+    <left>
+        <VBox spacing="16" styleClass="side-nav" prefWidth="240.0">
+            <padding>
+                <Insets top="30" right="20" bottom="30" left="20"/>
+            </padding>
+            <children>
+                <VBox spacing="4" style="-fx-padding: 0 0 20 0;">
+                    <Label text="Smart Campus" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #004ac6;"/>
+                    <Label text="Lost &amp; Found Portal" style="-fx-font-size: 11px; -fx-text-fill: #6B7280; -fx-font-family: 'JetBrains Mono';"/>
+                </VBox>
+                
+                <VBox spacing="8" VBox.vgrow="ALWAYS">
+                    <Button text="Dashboard" fx:id="btnDashboard" onAction="#showDashboardView" styleClass="nav-link, nav-link-active" maxWidth="Infinity"/>
+                    <Button text="Report Lost Item" fx:id="btnReportLost" onAction="#showReportLostView" styleClass="nav-link" maxWidth="Infinity"/>
+                    <Button text="Report Found Item" fx:id="btnReportFound" onAction="#showReportFoundView" styleClass="nav-link" maxWidth="Infinity"/>
+                    <Button text="My Claims" fx:id="btnMyClaims" onAction="#showClaimsView" styleClass="nav-link" maxWidth="Infinity"/>
+                    <Button text="My Profile" fx:id="btnProfile" onAction="#showProfileView" styleClass="nav-link" maxWidth="Infinity"/>
+                </VBox>
+                
+                <VBox spacing="10">
+                    <Label fx:id="lblUserName" text="Welcome, User!" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <Button text="Log Out" onAction="#handleLogout" styleClass="button-secondary" maxWidth="Infinity"/>
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+    
+    <!-- Center Content Panel -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background-insets: 0;">
+            <content>
+                <VBox spacing="24" style="-fx-padding: 30px;">
+                    <!-- Greeting Row -->
+                    <HBox alignment="CENTER_LEFT" spacing="20">
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Student Dashboard" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                            <Label text="Check matching items and track claim recoveries." style="-fx-text-fill: #6B7280;"/>
+                        </VBox>
+                        <Button text="Report A Lost Item" onAction="#showReportLostView" styleClass="button-primary" style="-fx-background-color: #EF4444; -fx-text-fill: white;" />
+                    </HBox>
+
+                    <!-- Stats Row -->
+                    <HBox spacing="16" fillHeight="false">
+                        <!-- Card 1 -->
+                        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+                            <Label text="My Lost Reports" style="-fx-font-size: 13px; -fx-text-fill: #6B7280;"/>
+                            <Label fx:id="lblLostCount" text="0" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                        </VBox>
+                        <!-- Card 2 -->
+                        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+                            <Label text="Active Found Items" style="-fx-font-size: 13px; -fx-text-fill: #6B7280;"/>
+                            <Label fx:id="lblFoundCount" text="0" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                        </VBox>
+                        <!-- Card 3 -->
+                        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+                            <Label text="Claims Pending" style="-fx-font-size: 13px; -fx-text-fill: #6B7280;"/>
+                            <Label fx:id="lblPendingCount" text="0" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Split section: Matching & Items -->
+                    <GridPane hgap="20" vgap="20">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="60"/>
+                            <ColumnConstraints percentWidth="40"/>
+                        </columnConstraints>
+                        <children>
+                            <!-- Search & Available Found Items -->
+                            <VBox spacing="12" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="card">
+                                <Label text="Available Found Items" styleClass="heading-sm"/>
+                                
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <TextField fx:id="searchField" promptText="Search found items..." HBox.hgrow="ALWAYS"/>
+                                    <Button text="Search" onAction="#handleSearch" styleClass="button-secondary"/>
+                                </HBox>
+                                
+                                <TableView fx:id="tblFoundItems" prefHeight="250.0">
+                                    <columns>
+                                        <TableColumn fx:id="colTitle" text="Title" prefWidth="120" />
+                                        <TableColumn fx:id="colCategory" text="Category" prefWidth="100" />
+                                        <TableColumn fx:id="colColor" text="Color" prefWidth="80" />
+                                        <TableColumn fx:id="colLocation" text="Location Found" prefWidth="120" />
+                                        <TableColumn fx:id="colDate" text="Date Found" prefWidth="90" />
+                                    </columns>
+                                </TableView>
+                                <HBox alignment="CENTER_RIGHT">
+                                    <Button text="File Claim for Selected Item" onAction="#fileClaimForSelected" styleClass="button-primary"/>
+                                </HBox>
+                            </VBox>
+
+                            <!-- Smart Matches list -->
+                            <VBox spacing="12" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="card" style="-fx-border-color: #3b82f6;">
+                                <Label text="Smart Matches (Recommended)" styleClass="heading-sm" style="-fx-text-fill: #2563eb;"/>
+                                <Label text="Hurry! These items have similar attributes." style="-fx-font-size: 12px; -fx-text-fill: #6B7280;"/>
+                                
+                                <ListView fx:id="lstMatches" prefHeight="290.0" style="-fx-background-color: transparent;"/>
+                            </VBox>
+                        </children>
+                    </GridPane>
+
+                    <!-- My Lost Reports Table -->
+                    <VBox spacing="12" styleClass="card">
+                        <Label text="My Lost Item Reports" styleClass="heading-sm"/>
+                        <TableView fx:id="tblMyLostReports" prefHeight="200.0">
+                            <columns>
+                                <TableColumn fx:id="colMyLostTitle" text="Title" prefWidth="150" />
+                                <TableColumn fx:id="colMyLostCategory" text="Category" prefWidth="120" />
+                                <TableColumn fx:id="colMyLostLocation" text="Last Seen Location" prefWidth="180" />
+                                <TableColumn fx:id="colMyLostDate" text="Date Lost" prefWidth="110" />
+                                <TableColumn fx:id="colMyLostStatus" text="Status" prefWidth="100" />
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

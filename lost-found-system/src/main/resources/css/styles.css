@@ -1,0 +1,234 @@
+/* CSS Design System for Smart Campus Lost & Found System */
+
+.root {
+    -fx-font-family: "Inter", "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f9f9ff;
+    -fx-text-fill: #151c27;
+
+    /* Color Palette variables */
+    -primary-color: #004ac6;
+    -primary-container: #2563eb;
+    -on-primary: #ffffff;
+    -secondary-color: #006c49;
+    -secondary-container: #6cf8bb;
+    -warning-color: #F59E0B;
+    -error-color: #EF4444;
+    -surface-color: #FFFFFF;
+    -border-light: #E5E7EB;
+    -text-primary: #111827;
+    -text-secondary: #6B7280;
+    -surface-container: #e7eefe;
+}
+
+/* Headings */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+.subtitle-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -text-secondary;
+}
+
+.heading-sm {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+/* Mono labels for timestamps or claim ID */
+.mono-label {
+    -fx-font-family: "JetBrains Mono", "Courier New", monospace;
+    -fx-font-size: 12px;
+    -fx-text-fill: -text-secondary;
+}
+
+/* Input Form Controls */
+.text-field, .text-area, .password-field {
+    -fx-background-color: -surface-color;
+    -fx-background-radius: 8px;
+    -fx-border-color: -border-light;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-padding: 8px 12px;
+    -fx-text-fill: -text-primary;
+    -fx-prompt-text-fill: -text-secondary;
+}
+
+.text-field:focused, .text-area:focused, .password-field:focused {
+    -fx-border-color: -primary-container;
+    -fx-effect: dropshadow(three-pass-box, rgba(37, 99, 235, 0.15), 4, 0, 0, 0);
+}
+
+.combo-box {
+    -fx-background-color: -surface-color;
+    -fx-background-radius: 8px;
+    -fx-border-color: -border-light;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-padding: 4px;
+}
+
+.combo-box:focused {
+    -fx-border-color: -primary-container;
+}
+
+.date-picker {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.date-picker > .text-field {
+    -fx-background-radius: 8px 0px 0px 8px;
+    -fx-border-radius: 8px 0px 0px 8px;
+}
+
+/* Buttons */
+.button {
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+}
+
+.button-primary {
+    -fx-background-color: -primary-container;
+    -fx-text-fill: -on-primary;
+}
+
+.button-primary:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.button-primary:pressed {
+    -fx-background-color: #1e40af;
+}
+
+.button-secondary {
+    -fx-background-color: #F3F4F6;
+    -fx-text-fill: -text-primary;
+    -fx-border-color: -border-light;
+    -fx-border-radius: 8px;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #E5E7EB;
+}
+
+.button-danger {
+    -fx-background-color: -error-color;
+    -fx-text-fill: white;
+}
+
+.button-danger:hover {
+    -fx-background-color: #dc2626;
+}
+
+/* Side navigation panel */
+.side-nav {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: -border-light;
+    -fx-border-width: 0px 1px 0px 0px;
+    -fx-padding: 24px 16px;
+}
+
+.nav-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-secondary;
+    -fx-alignment: center-left;
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 8px;
+}
+
+.nav-link:hover {
+    -fx-background-color: #f3f4f6;
+    -fx-text-fill: -text-primary;
+}
+
+.nav-link-active {
+    -fx-background-color: -surface-container;
+    -fx-text-fill: -primary-container;
+    -fx-font-weight: bold;
+}
+
+/* Cards & Containers */
+.card {
+    -fx-background-color: -surface-color;
+    -fx-background-radius: 12px;
+    -fx-border-color: -border-light;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1px;
+    -fx-padding: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 4, 0, 0, 1);
+}
+
+.card-hover:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 4);
+    -fx-translate-y: -2px;
+}
+
+/* Table View styling */
+.table-view {
+    -fx-background-color: -surface-color;
+    -fx-background-radius: 8px;
+    -fx-border-color: -border-light;
+    -fx-border-radius: 8px;
+    -fx-padding: 0px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f3f4f6;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-primary;
+    -fx-font-weight: bold;
+    -fx-padding: 12px;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: -surface-color;
+    -fx-border-color: -border-light;
+    -fx-border-width: 0px 0px 1px 0px;
+}
+
+.table-view .table-row-cell:filled:hover {
+    -fx-background-color: #f9fafb;
+}
+
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: -surface-container;
+    -fx-text-fill: -primary-container;
+}
+
+/* Status Chips */
+.status-chip {
+    -fx-background-radius: 16px;
+    -fx-padding: 4px 10px;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.status-active, .status-available {
+    -fx-background-color: #D1FAE5;
+    -fx-text-fill: #065F46;
+}
+
+.status-matched, .status-verification, .status-review {
+    -fx-background-color: #FEF3C7;
+    -fx-text-fill: #92400E;
+}
+
+.status-recovered, .status-claimed, .status-returned, .status-completed {
+    -fx-background-color: #DBEAFE;
+    -fx-text-fill: #1E40AF;
+}
+
+.status-closed, .status-expired, .status-rejected {
+    -fx-background-color: #FEE2E2;
+    -fx-text-fill: #991B1B;
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registration - Smart Campus Lost &amp; Found</title>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-lowest": "#ffffff",
+          "text-primary": "#111827",
+          "on-primary-fixed": "#00174b",
+          "on-secondary-fixed-variant": "#005236",
+          "secondary": "#006c49",
+          "inverse-on-surface": "#ebf1ff",
+          "surface": "#FFFFFF",
+          "border-light": "#E5E7EB",
+          "tertiary-fixed": "#dde1ff",
+          "on-primary-fixed-variant": "#003ea8",
+          "on-secondary": "#ffffff",
+          "on-surface-variant": "#434655",
+          "background": "#f9f9ff",
+          "warning": "#F59E0B",
+          "primary-fixed": "#dbe1ff",
+          "inverse-surface": "#2a313d",
+          "secondary-fixed": "#6ffbbe",
+          "on-error-container": "#93000a",
+          "surface-dim": "#d3daea",
+          "surface-container-highest": "#dce2f3",
+          "on-secondary-fixed": "#002113",
+          "on-surface": "#151c27",
+          "primary-container": "#2563eb",
+          "surface-container-high": "#e2e8f8",
+          "tertiary-container": "#4865d4",
+          "surface-tint": "#0053db",
+          "on-tertiary": "#ffffff",
+          "on-primary-container": "#eeefff",
+          "error": "#EF4444",
+          "surface-container": "#e7eefe",
+          "primary-fixed-dim": "#b4c5ff",
+          "primary": "#004ac6",
+          "on-background": "#151c27",
+          "on-tertiary-fixed": "#001453",
+          "on-primary": "#ffffff",
+          "on-tertiary-container": "#eff0ff",
+          "error-container": "#ffdad6",
+          "on-error": "#ffffff",
+          "surface-bright": "#f9f9ff",
+          "on-tertiary-fixed-variant": "#173bab",
+          "inverse-primary": "#b4c5ff",
+          "on-secondary-container": "#00714d",
+          "tertiary-fixed-dim": "#b8c4ff",
+          "text-secondary": "#6B7280",
+          "outline": "#737686",
+          "background-subtle": "#F9FAFB",
+          "surface-container-low": "#f0f3ff",
+          "surface-variant": "#dce2f3",
+          "secondary-fixed-dim": "#4edea3",
+          "secondary-container": "#6cf8bb",
+          "tertiary": "#2c4bb9",
+          "outline-variant": "#c3c6d7"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "sm": "8px",
+          "container-max": "1280px",
+          "lg": "24px",
+          "2xl": "48px",
+          "md": "16px",
+          "xs": "4px",
+          "xl": "32px",
+          "gutter": "16px"
+        },
+        "fontFamily": {
+          "body-sm": ["Inter"],
+          "body-md": ["Inter"],
+          "headline-lg": ["Inter"],
+          "headline-sm": ["Inter"],
+          "headline-md": ["Inter"],
+          "label-md": ["JetBrains Mono"],
+          "label-sm": ["JetBrains Mono"],
+          "headline-lg-mobile": ["Inter"],
+          "body-lg": ["Inter"]
+        },
+        "fontSize": {
+          "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+          "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+          "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+          "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+</style>
+</head>
+<body class="bg-background min-h-screen flex items-center justify-center p-md md:p-lg antialiased">
+<!-- Main Registration Container -->
+<main class="w-full max-w-3xl bg-surface rounded-xl shadow-sm border border-border-light overflow-hidden flex flex-col relative">
+  <!-- Top Linear Progress Bar -->
+  <div class="w-full h-1 bg-surface-container absolute top-0 left-0">
+    <div class="h-full bg-primary-container w-1/3 transition-all duration-500 ease-in-out"></div>
+  </div>
+  <div class="p-lg md:p-xl flex flex-col gap-lg md:gap-xl">
+    <!-- Header -->
+    <header class="flex flex-col gap-xs mt-sm">
+      <div class="flex items-center gap-sm text-primary mb-xs">
+        <span class="material-symbols-outlined text-[20px]">school</span>
+        <span class="font-label-md text-label-md">Smart Campus Recovery</span>
+      </div>
+      <h1 class="font-headline-md text-headline-md text-text-primary">Create your account</h1>
+      <p class="font-body-md text-body-md text-text-secondary flex justify-between items-center w-full">
+        <span>Account Information</span>
+        <span class="font-label-sm text-label-sm bg-surface-container px-sm py-[2px] rounded-full text-on-surface-variant">Step 1 of 3</span>
+      </p>
+    </header>
+    <!-- Form -->
+    <form action="#" class="flex flex-col gap-lg" method="POST">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg">
+        <!-- Full Name -->
+        <div class="flex flex-col gap-xs md:col-span-2">
+          <label class="font-label-md text-label-md text-text-primary" for="fullName">Full Name</label>
+          <input class="w-full h-12 px-md border border-border-light rounded-lg bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md text-text-primary transition-all placeholder:text-outline-variant" id="fullName" name="fullName" placeholder="Jane Doe" required="" type="text"/>
+        </div>
+        <!-- Email -->
+        <div class="flex flex-col gap-xs md:col-span-2">
+          <label class="font-label-md text-label-md text-text-primary" for="email">Institutional Email</label>
+          <div class="relative flex items-center w-full h-12">
+            <span class="material-symbols-outlined absolute left-md text-outline">mail</span>
+            <input class="w-full h-full pl-[44px] pr-md border border-border-light rounded-lg bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md text-text-primary transition-all placeholder:text-outline-variant" id="email" name="email" placeholder="jdoe" required="" type="email"/>
+            <span class="absolute right-md font-body-sm text-body-sm text-text-secondary pointer-events-none">@university.edu</span>
+          </div>
+        </div>
+        <!-- Student/Staff ID -->
+        <div class="flex flex-col gap-xs">
+          <label class="font-label-md text-label-md text-text-primary" for="idNumber">Student / Staff ID</label>
+          <input class="w-full h-12 px-md border border-border-light rounded-lg bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md text-text-primary transition-all placeholder:text-outline-variant" id="idNumber" name="idNumber" placeholder="e.g., 900123456" required="" type="text"/>
+        </div>
+        <!-- Phone -->
+        <div class="flex flex-col gap-xs">
+          <label class="font-label-md text-label-md text-text-primary" for="phone">Phone Number</label>
+          <input class="w-full h-12 px-md border border-border-light rounded-lg bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md text-text-primary transition-all placeholder:text-outline-variant" id="phone" name="phone" placeholder="(555) 123-4567" type="tel"/>
+        </div>
+        <!-- Password -->
+        <div class="flex flex-col gap-xs">
+          <label class="font-label-md text-label-md text-text-primary" for="password">Password</label>
+          <div class="relative flex items-center w-full h-12">
+            <span class="material-symbols-outlined absolute left-md text-outline">lock</span>
+            <input class="w-full h-full pl-[44px] pr-md border border-border-light rounded-lg bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md text-text-primary transition-all placeholder:text-outline-variant" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+          </div>
+          <p class="font-body-sm text-body-sm text-text-secondary mt-xs">Min. 8 characters, include a number &amp; symbol.</p>
+        </div>
+        <!-- Confirm Password -->
+        <div class="flex flex-col gap-xs">
+          <label class="font-label-md text-label-md text-text-primary" for="confirmPassword">Confirm Password</label>
+          <div class="relative flex items-center w-full h-12">
+            <span class="material-symbols-outlined absolute left-md text-outline">lock_clock</span>
+            <input class="w-full h-full pl-[44px] pr-md border border-border-light rounded-lg bg-surface-container-lowest focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md text-text-primary transition-all placeholder:text-outline-variant" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required="" type="password"/>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Actions Footer -->
+  <div class="bg-background-subtle border-t border-border-light p-lg md:px-xl flex items-center justify-between mt-auto">
+    <button class="px-lg py-sm rounded-lg border border-border-light bg-surface font-label-md text-label-md text-text-primary hover:bg-surface-container-low transition-colors focus:outline-none focus:ring-2 focus:ring-outline-variant" type="button">
+      Cancel
+    </button>
+    <button class="px-lg py-sm rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center gap-xs hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2" type="button">
+      Next Step
+      <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+    </button>
+  </div>
+</main>
+</body>
+</html>

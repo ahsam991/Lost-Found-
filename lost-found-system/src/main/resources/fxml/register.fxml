@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.campus.lostfound.controller.RegisterController" 
+           prefWidth="1024.0" prefHeight="768.0" style="-fx-background-color: #f9f9ff;">
+    
+    <VBox spacing="20" alignment="CENTER" maxWidth="500.0" maxHeight="700.0" 
+          style="-fx-background-color: white; -fx-background-radius: 12px; -fx-padding: 30px; 
+                 -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 4); 
+                 -fx-border-color: #E5E7EB; -fx-border-radius: 12px; -fx-border-width: 1px;">
+        
+        <VBox spacing="6" alignment="CENTER">
+            <Label text="Create Account" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+            <Label text="Access the campus lost and found portal" style="-fx-font-size: 13px; -fx-text-fill: #6B7280;"/>
+        </VBox>
+        
+        <GridPane hgap="16" vgap="12">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="50" />
+            </columnConstraints>
+            
+            <children>
+                <!-- Full Name -->
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Full Name *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="fullNameField" promptText="John Doe" />
+                </VBox>
+                
+                <!-- Email -->
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="University Email *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="emailField" promptText="john@university.edu" />
+                </VBox>
+                
+                <!-- Student / Staff ID -->
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Student/Staff ID *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="studentIdField" promptText="e.g. S12345" />
+                </VBox>
+                
+                <!-- Phone -->
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Phone Number" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="phoneField" promptText="+1 234 567 890" />
+                </VBox>
+                
+                <!-- Department -->
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Label text="Department" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="departmentField" promptText="Computer Science" />
+                </VBox>
+                
+                <!-- Campus Location -->
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <Label text="Primary Campus Location" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="locationField" promptText="Engineering Bldg Room 301" />
+                </VBox>
+                
+                <!-- Password -->
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <Label text="Password *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <PasswordField fx:id="passwordField" promptText="Min 8 chars, 1 uppercase, 1 number" />
+                </VBox>
+                
+                <!-- Role -->
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <Label text="I am a *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <ComboBox fx:id="roleComboBox" promptText="Select Role" maxWidth="Infinity">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Student" />
+                                <String fx:value="Staff" />
+                                <String fx:value="Security" />
+                                <String fx:value="Admin" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
+            </children>
+        </GridPane>
+        
+        <Label fx:id="errorLabel" text="" style="-fx-text-fill: #EF4444; -fx-font-weight: bold;" wrapText="true"/>
+        
+        <!-- Actions -->
+        <VBox spacing="10" alignment="CENTER" fillWidth="true">
+            <Button text="Register &amp; Send Verification Email" onAction="#handleRegister" styleClass="button-primary" prefHeight="40.0" maxWidth="Infinity" />
+            <Button text="Back to Login" onAction="#goToLogin" styleClass="button-secondary" prefHeight="40.0" maxWidth="Infinity" />
+        </VBox>
+    </VBox>
+</StackPane>

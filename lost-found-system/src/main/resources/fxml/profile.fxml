@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.campus.lostfound.controller.ProfileController" 
+      spacing="16" style="-fx-padding: 30px; -fx-background-color: #f9f9ff;" prefWidth="800.0" prefHeight="650.0">
+    
+    <children>
+        <VBox spacing="4">
+            <Label text="My Profile Settings" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+            <Label text="Update your contact settings, primary department locations, and password settings." style="-fx-text-fill: #6B7280;"/>
+        </VBox>
+        
+        <Separator />
+
+        <GridPane hgap="20" vgap="16">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="50" />
+            </columnConstraints>
+            
+            <children>
+                <!-- Left Column: Personal info -->
+                <VBox spacing="12" GridPane.columnIndex="0" styleClass="card">
+                    <Label text="Personal Information" styleClass="heading-sm"/>
+                    
+                    <VBox spacing="4">
+                        <Label text="Full Name" style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="txtFullName" />
+                    </VBox>
+                    
+                    <VBox spacing="4">
+                        <Label text="Phone Number" style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="txtPhone" />
+                    </VBox>
+
+                    <VBox spacing="4">
+                        <Label text="Student / Staff ID" style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="txtStudentId" />
+                    </VBox>
+
+                    <VBox spacing="4">
+                        <Label text="Department" style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="txtDepartment" />
+                    </VBox>
+
+                    <VBox spacing="4">
+                        <Label text="Campus Location" style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="txtLocation" />
+                    </VBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
+                        <Button text="Update Profile Details" onAction="#handleUpdateProfile" styleClass="button-primary"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Right Column: Password and Avatar -->
+                <VBox spacing="12" GridPane.columnIndex="1" styleClass="card">
+                    <Label text="Account Security" styleClass="heading-sm"/>
+                    
+                    <VBox spacing="4">
+                        <Label text="Current Password" style="-fx-font-weight: bold;"/>
+                        <PasswordField fx:id="txtOldPassword" />
+                    </VBox>
+
+                    <VBox spacing="4">
+                        <Label text="New Password" style="-fx-font-weight: bold;"/>
+                        <PasswordField fx:id="txtNewPassword" />
+                    </VBox>
+
+                    <VBox spacing="4">
+                        <Label text="Confirm New Password" style="-fx-font-weight: bold;"/>
+                        <PasswordField fx:id="txtConfirmPassword" />
+                    </VBox>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
+                        <Button text="Change Password" onAction="#handleChangePassword" styleClass="button-primary" style="-fx-background-color: #EF4444;"/>
+                    </HBox>
+
+                    <Separator style="-fx-padding: 10 0 10 0;"/>
+                    
+                    <Label text="Profile Photo" styleClass="heading-sm"/>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Button text="Upload Photo" onAction="#handleUploadAvatar" styleClass="button-secondary" />
+                        <Label fx:id="lblAvatarStatus" text="Default avatar" style="-fx-text-fill: #6B7280;"/>
+                    </HBox>
+                </VBox>
+            </children>
+        </GridPane>
+
+        <Label fx:id="lblErrorSuccess" text="" style="-fx-font-weight: bold;" wrapText="true" />
+    </children>
+</VBox>

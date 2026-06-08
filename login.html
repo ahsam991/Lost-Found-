@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Login - Smart Campus Lost &amp; Found</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-lowest": "#ffffff",
+          "text-primary": "#111827",
+          "on-primary-fixed": "#00174b",
+          "on-secondary-fixed-variant": "#005236",
+          "secondary": "#006c49",
+          "inverse-on-surface": "#ebf1ff",
+          "surface": "#FFFFFF",
+          "border-light": "#E5E7EB",
+          "tertiary-fixed": "#dde1ff",
+          "on-primary-fixed-variant": "#003ea8",
+          "on-secondary": "#ffffff",
+          "on-surface-variant": "#434655",
+          "background": "#f9f9ff",
+          "warning": "#F59E0B",
+          "primary-fixed": "#dbe1ff",
+          "inverse-surface": "#2a313d",
+          "secondary-fixed": "#6ffbbe",
+          "on-error-container": "#93000a",
+          "surface-dim": "#d3daea",
+          "surface-container-highest": "#dce2f3",
+          "on-secondary-fixed": "#002113",
+          "on-surface": "#151c27",
+          "primary-container": "#2563eb",
+          "surface-container-high": "#e2e8f8",
+          "tertiary-container": "#4865d4",
+          "surface-tint": "#0053db",
+          "on-tertiary": "#ffffff",
+          "on-primary-container": "#eeefff",
+          "error": "#EF4444",
+          "surface-container": "#e7eefe",
+          "primary-fixed-dim": "#b4c5ff",
+          "primary": "#004ac6",
+          "on-background": "#151c27",
+          "on-tertiary-fixed": "#001453",
+          "on-primary": "#ffffff",
+          "on-tertiary-container": "#eff0ff",
+          "error-container": "#ffdad6",
+          "on-error": "#ffffff",
+          "surface-bright": "#f9f9ff",
+          "on-tertiary-fixed-variant": "#173bab",
+          "inverse-primary": "#b4c5ff",
+          "on-secondary-container": "#00714d",
+          "tertiary-fixed-dim": "#b8c4ff",
+          "text-secondary": "#6B7280",
+          "outline": "#737686",
+          "background-subtle": "#F9FAFB",
+          "surface-container-low": "#f0f3ff",
+          "surface-variant": "#dce2f3",
+          "secondary-fixed-dim": "#4edea3",
+          "secondary-container": "#6cf8bb",
+          "tertiary": "#2c4bb9",
+          "outline-variant": "#c3c6d7"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "sm": "8px",
+          "container-max": "1280px",
+          "lg": "24px",
+          "2xl": "48px",
+          "md": "16px",
+          "xs": "4px",
+          "xl": "32px",
+          "gutter": "16px"
+        },
+        "fontFamily": {
+          "body-sm": ["Inter"],
+          "body-md": ["Inter"],
+          "headline-lg": ["Inter"],
+          "headline-sm": ["Inter"],
+          "headline-md": ["Inter"],
+          "label-md": ["JetBrains Mono"],
+          "label-sm": ["JetBrains Mono"],
+          "headline-lg-mobile": ["Inter"],
+          "body-lg": ["Inter"]
+        },
+        "fontSize": {
+          "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+          "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+          "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+          "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
+</head>
+<body class="bg-background-subtle text-text-primary min-h-screen flex items-center justify-center p-md md:p-lg antialiased">
+<!-- Gradient Background Decor -->
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+  <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-primary-container/10 rounded-full blur-3xl opacity-50"></div>
+  <div class="absolute top-[60%] -right-[10%] w-[40%] h-[60%] bg-primary-container/10 rounded-full blur-3xl opacity-50"></div>
+</div>
+<!-- Login Card -->
+<main class="relative z-10 w-full max-w-md bg-surface border border-border-light rounded-xl shadow-sm overflow-hidden flex flex-col">
+  <!-- Header -->
+  <div class="p-lg md:p-xl flex flex-col items-center text-center border-b border-border-light bg-surface-container-lowest">
+    <div class="w-16 h-16 bg-primary-container rounded-lg flex items-center justify-center mb-md shadow-sm">
+      <span class="material-symbols-outlined text-[32px] text-on-primary">search</span>
+    </div>
+    <h1 class="font-headline-md text-headline-md text-text-primary mb-xs">Smart Campus</h1>
+    <p class="font-body-sm text-body-sm text-text-secondary">Lost &amp; Found Management System</p>
+  </div>
+  <!-- Form Section -->
+  <div class="p-lg md:p-xl bg-surface">
+    <form class="flex flex-col gap-md">
+      <!-- Email Input -->
+      <div class="flex flex-col gap-xs">
+        <label class="font-label-md text-label-md text-text-primary" for="email">Email Address</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-sm flex items-center pointer-events-none">
+            <span class="material-symbols-outlined text-text-secondary">mail</span>
+          </div>
+          <input class="w-full pl-xl pr-sm py-sm bg-surface border border-border-light rounded focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all font-body-sm text-body-sm text-text-primary placeholder-text-secondary" id="email" name="email" placeholder="student@campus.edu" required="" type="email">
+        </div>
+      </div>
+      <!-- Password Input -->
+      <div class="flex flex-col gap-xs">
+        <div class="flex justify-between items-center">
+          <label class="font-label-md text-label-md text-text-primary" for="password">Password</label>
+          <a class="font-body-sm text-body-sm text-primary-container hover:underline focus:outline-none focus:ring-2 focus:ring-primary-container rounded-sm" href="#">Forgot Password?</a>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-sm flex items-center pointer-events-none">
+            <span class="material-symbols-outlined text-text-secondary">lock</span>
+          </div>
+          <input class="w-full pl-xl pr-xl py-sm bg-surface border border-border-light rounded focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none transition-all font-body-sm text-body-sm text-text-primary placeholder-text-secondary" id="password" name="password" placeholder="••••••••" required="" type="password">
+          <button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-sm flex items-center text-text-secondary hover:text-text-primary focus:outline-none" type="button">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </div>
+      </div>
+      <!-- Remember Me -->
+      <div class="flex items-center gap-sm mt-xs">
+        <input class="w-4 h-4 text-primary-container bg-surface border-border-light rounded focus:ring-primary-container focus:ring-2 cursor-pointer" id="remember" name="remember" type="checkbox">
+        <label class="font-body-sm text-body-sm text-text-primary cursor-pointer" for="remember">Remember me for 30 days</label>
+      </div>
+      <!-- Actions -->
+      <div class="flex flex-col gap-sm mt-md">
+        <button class="w-full bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold py-sm px-md rounded shadow-sm hover:bg-primary-container/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-container transition-all flex items-center justify-center gap-sm" type="submit">
+          <span>Sign In</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+        <div class="relative flex items-center py-sm">
+          <div class="flex-grow border-t border-border-light"></div>
+          <span class="flex-shrink-0 mx-sm font-label-sm text-label-sm text-text-secondary uppercase">Or</span>
+          <div class="flex-grow border-t border-border-light"></div>
+        </div>
+        <button class="w-full bg-surface border border-border-light text-text-primary font-body-sm text-body-sm font-semibold py-sm px-md rounded shadow-sm hover:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border-light transition-all flex items-center justify-center gap-sm" type="button">
+          <span class="material-symbols-outlined text-[18px] text-text-secondary">badge</span>
+          <span>Student/Staff ID Login</span>
+        </button>
+      </div>
+      <!-- Register Link -->
+      <div class="text-center mt-md">
+        <p class="font-body-sm text-body-sm text-text-secondary">
+          Don't have an account?
+          <a class="font-body-sm text-body-sm font-semibold text-primary-container hover:underline focus:outline-none focus:ring-2 focus:ring-primary-container rounded-sm" href="register.html">Register</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</main>
+</body>
+</html>

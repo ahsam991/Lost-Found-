@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.campus.lostfound.controller.ClaimController" 
+      spacing="16" style="-fx-padding: 30px; -fx-background-color: #f9f9ff;" prefWidth="750.0" prefHeight="650.0">
+    
+    <children>
+        <VBox spacing="4">
+            <Label text="File a Verification Claim" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+            <Label text="Answer security questions and upload proof of ownership to verify identity." style="-fx-text-fill: #6B7280;"/>
+        </VBox>
+        
+        <Separator />
+
+        <!-- Selected Found Item Details Summary -->
+        <VBox spacing="8" styleClass="card" style="-fx-background-color: #f0f3ff; -fx-border-color: #dbe1ff;">
+            <Label text="Item Claiming Details:" style="-fx-font-weight: bold; -fx-text-fill: #004ac6;"/>
+            <GridPane hgap="12" vgap="4">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="120" />
+                    <ColumnConstraints hgrow="ALWAYS" />
+                </columnConstraints>
+                <children>
+                    <Label text="Item Title:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" />
+                    <Label fx:id="lblItemTitle" text="iPhone 13" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                    
+                    <Label text="Category / Color:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" />
+                    <Label fx:id="lblItemCategoryColor" text="Electronics / Black" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+                    <Label text="Location Stored:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" />
+                    <Label fx:id="lblItemLocation" text="Main Security Locker" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                </children>
+            </GridPane>
+        </VBox>
+
+        <!-- Security Questions -->
+        <VBox spacing="12">
+            <Label text="Security Questions" styleClass="heading-sm"/>
+            
+            <VBox spacing="6">
+                <Label text="1. Where and when did you purchase or lose this item? (e.g. details of purchase/loss)" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtAnswer1" promptText="Enter detail location, store, or time details..." />
+            </VBox>
+
+            <VBox spacing="6">
+                <Label text="2. What are the unique identifying features? (e.g. stickers, cases, contents, scratches)" style="-fx-font-weight: bold;"/>
+                <TextArea fx:id="txtAnswer2" promptText="Describe specific markings, sleeve styles, custom locks, wallpaper, or inside contents..." prefHeight="70.0" wrapText="true" />
+            </VBox>
+
+            <VBox spacing="6">
+                <Label text="3. Serial Number / ID Code (if applicable)" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtAnswer3" promptText="Provide serial code, IMEI, student name printed, or barcodes..." />
+            </VBox>
+        </VBox>
+
+        <!-- Proof Upload -->
+        <VBox spacing="8">
+            <Label text="Proof of Ownership" styleClass="heading-sm"/>
+            <HBox spacing="16" alignment="CENTER_LEFT">
+                <Button text="Attach Receipts / Photos of Use" onAction="#handleUploadProof" styleClass="button-secondary"/>
+                <Label fx:id="lblProofStatus" text="No proof files attached (Optional)" style="-fx-text-fill: #6B7280;"/>
+            </HBox>
+        </VBox>
+
+        <!-- Error/Status Label -->
+        <Label fx:id="lblErrorStatus" text="" style="-fx-text-fill: #EF4444; -fx-font-weight: bold;" wrapText="true" />
+
+        <Separator />
+        
+        <!-- Actions -->
+        <HBox spacing="12" alignment="CENTER_RIGHT">
+            <Button text="Cancel" onAction="#handleCancel" styleClass="button-secondary" />
+            <Button text="Submit Claim Request" onAction="#handleSubmitClaim" styleClass="button-primary" style="-fx-background-color: #2563eb;" />
+        </HBox>
+    </children>
+</VBox>

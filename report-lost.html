@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Report Lost Item - Smart Campus Lost &amp; Found</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-lowest": "#ffffff",
+          "text-primary": "#111827",
+          "on-primary-fixed": "#00174b",
+          "on-secondary-fixed-variant": "#005236",
+          "secondary": "#006c49",
+          "inverse-on-surface": "#ebf1ff",
+          "surface": "#FFFFFF",
+          "border-light": "#E5E7EB",
+          "tertiary-fixed": "#dde1ff",
+          "on-primary-fixed-variant": "#003ea8",
+          "on-secondary": "#ffffff",
+          "on-surface-variant": "#434655",
+          "background": "#f9f9ff",
+          "warning": "#F59E0B",
+          "primary-fixed": "#dbe1ff",
+          "inverse-surface": "#2a313d",
+          "secondary-fixed": "#6ffbbe",
+          "on-error-container": "#93000a",
+          "surface-dim": "#d3daea",
+          "surface-container-highest": "#dce2f3",
+          "on-secondary-fixed": "#002113",
+          "on-surface": "#151c27",
+          "primary-container": "#2563eb",
+          "surface-container-high": "#e2e8f8",
+          "tertiary-container": "#4865d4",
+          "surface-tint": "#0053db",
+          "on-tertiary": "#ffffff",
+          "on-primary-container": "#eeefff",
+          "error": "#EF4444",
+          "surface-container": "#e7eefe",
+          "primary-fixed-dim": "#b4c5ff",
+          "primary": "#004ac6",
+          "on-background": "#151c27",
+          "on-tertiary-fixed": "#001453",
+          "on-primary": "#ffffff",
+          "on-tertiary-container": "#eff0ff",
+          "error-container": "#ffdad6",
+          "on-error": "#ffffff",
+          "surface-bright": "#f9f9ff",
+          "on-tertiary-fixed-variant": "#173bab",
+          "inverse-primary": "#b4c5ff",
+          "on-secondary-container": "#00714d",
+          "tertiary-fixed-dim": "#b8c4ff",
+          "text-secondary": "#6B7280",
+          "outline": "#737686",
+          "background-subtle": "#F9FAFB",
+          "surface-container-low": "#f0f3ff",
+          "surface-variant": "#dce2f3",
+          "secondary-fixed-dim": "#4edea3",
+          "secondary-container": "#6cf8bb",
+          "tertiary": "#2c4bb9",
+          "outline-variant": "#c3c6d7"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "sm": "8px",
+          "container-max": "1280px",
+          "lg": "24px",
+          "2xl": "48px",
+          "md": "16px",
+          "xs": "4px",
+          "xl": "32px",
+          "gutter": "16px"
+        },
+        "fontFamily": {
+          "body-sm": ["Inter"],
+          "body-md": ["Inter"],
+          "headline-lg": ["Inter"],
+          "headline-sm": ["Inter"],
+          "headline-md": ["Inter"],
+          "label-md": ["JetBrains Mono"],
+          "label-sm": ["JetBrains Mono"],
+          "headline-lg-mobile": ["Inter"],
+          "body-lg": ["Inter"]
+        },
+        "fontSize": {
+          "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+          "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+          "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+          "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .material-symbols-outlined[data-weight="fill"] {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  /* Form Field Glow Effect */
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  }
+</style>
+</head>
+<body class="bg-background-subtle text-text-primary font-body-md min-h-screen flex antialiased">
+<!-- Side Navigation -->
+<nav class="bg-surface-container-lowest border-r border-border-light h-screen w-64 fixed left-0 top-0 flex flex-col p-md gap-sm hidden md:flex z-40">
+  <div class="mb-xl px-sm">
+    <h1 class="font-headline-sm text-headline-sm font-bold text-primary flex items-center gap-sm">
+      <span class="material-symbols-outlined" data-weight="fill">school</span>
+      Smart Campus
+    </h1>
+    <p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Lost &amp; Found System</p>
+  </div>
+  <div class="flex-1 flex flex-col gap-sm">
+    <a class="text-on-surface-variant hover:bg-surface-container transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-md px-md py-sm rounded-lg" href="dashboard.html">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="font-label-md text-label-md">Dashboard</span>
+    </a>
+    <a class="bg-primary-container text-on-primary-container rounded-lg font-semibold hover:bg-surface-container transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-md px-md py-sm" href="#">
+      <span class="material-symbols-outlined">search</span>
+      <span class="font-label-md text-label-md">Lost Items</span>
+    </a>
+    <a class="text-on-surface-variant hover:bg-surface-container transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-md px-md py-sm rounded-lg" href="#">
+      <span class="material-symbols-outlined">inventory_2</span>
+      <span class="font-label-md text-label-md">Found Items</span>
+    </a>
+    <a class="text-on-surface-variant hover:bg-surface-container transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-md px-md py-sm rounded-lg" href="#">
+      <span class="material-symbols-outlined">assignment_turned_in</span>
+      <span class="font-label-md text-label-md">My Claims</span>
+    </a>
+    <a class="text-on-surface-variant hover:bg-surface-container transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-md px-md py-sm rounded-lg" href="#">
+      <span class="material-symbols-outlined">notifications_active</span>
+      <span class="font-label-md text-label-md">Alerts</span>
+    </a>
+    <a class="text-on-surface-variant hover:bg-surface-container transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-md px-md py-sm rounded-lg" href="#">
+      <span class="material-symbols-outlined">settings</span>
+      <span class="font-label-md text-label-md">Settings</span>
+    </a>
+  </div>
+  <button class="mt-auto bg-primary text-on-primary font-label-md text-label-md py-sm px-md rounded-lg flex justify-center items-center gap-sm hover:bg-tertiary transition-colors shadow-sm w-full">
+    <span class="material-symbols-outlined text-[18px]">add</span>
+    Report Found Item
+  </button>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen">
+  <!-- Top App Bar -->
+  <header class="bg-surface border-b border-border-light shadow-sm w-full h-16 flex justify-between items-center px-lg sticky top-0 z-30">
+    <div class="flex items-center md:hidden gap-md">
+      <button class="text-text-primary p-sm rounded-full hover:bg-surface-container-low transition-colors">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <span class="text-headline-sm font-headline-sm font-bold text-primary">Campus Recovery</span>
+    </div>
+    <!-- Breadcrumbs -->
+    <div class="hidden md:flex items-center gap-sm text-text-secondary">
+      <span class="font-label-md text-label-md">Lost Items</span>
+      <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+      <span class="font-label-md text-label-md text-text-primary font-semibold">Report Lost Item</span>
+    </div>
+    <div class="flex items-center gap-md">
+      <button class="text-text-primary p-sm rounded-full hover:bg-surface-container-low transition-colors relative cursor-pointer active:scale-95 duration-150">
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full border border-surface"></span>
+      </button>
+      <div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-border-light cursor-pointer active:scale-95 duration-150">
+        <img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlUF9x6k6N9wuDDdN9VGo9G0n1Xz3s0sIYwCKg0A5e86Zots2PG0kVAeMMT6WkRjB3N0C-vxaF9luNGq-vtLXxckBKT_mcQAjn77YKaarmcwl_J1qa35HZ89DWGSIPoMFKW66Syfkni5C0joTxr1GPDZqa9pQ4-nE-lSkl9UDlarv0faHi_EIszz7V3pUxsuEB1nKBNqQUVtv0mBRXxNrYyVZ12YOHaO5c_HmGAWWfllcMz07uFIomaMRZ6x7AzC9IDxTK4AZEdoc"/>
+      </div>
+    </div>
+  </header>
+  <!-- Page Content Canvas -->
+  <div class="flex-1 p-md md:p-xl max-w-container-max mx-auto w-full">
+    <div class="mb-xl">
+      <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-primary mb-sm">Report a Lost Item</h2>
+      <p class="font-body-md text-body-md text-text-secondary max-w-2xl">Please provide as much detail as possible to help us match your lost property. The more specific you are, the higher the chances of recovery.</p>
+    </div>
+    <!-- Progress Indicator -->
+    <div class="flex items-center mb-xl w-full max-w-3xl">
+      <div class="flex items-center text-primary-container">
+        <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-md font-bold z-10 relative">1</div>
+        <span class="ml-sm font-label-md text-label-md font-semibold hidden sm:inline">Basic Info</span>
+      </div>
+      <div class="flex-1 h-1 mx-sm bg-primary-container/20 relative">
+        <div class="absolute top-0 left-0 h-full w-1/2 bg-primary-container"></div>
+      </div>
+      <div class="flex items-center text-text-secondary">
+        <div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label-md font-bold z-10 relative">2</div>
+        <span class="ml-sm font-label-md text-label-md hidden sm:inline">Verification</span>
+      </div>
+    </div>
+    <!-- Form Container -->
+    <form class="bg-surface rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.1)] border border-border-light p-lg md:p-xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+        <!-- Left Column: Basic Info -->
+        <div class="space-y-lg">
+          <div>
+            <h3 class="font-headline-sm text-headline-sm text-text-primary border-b border-border-light pb-sm mb-md flex items-center gap-sm">
+              <span class="material-symbols-outlined text-primary-container">info</span>
+              Basic Information
+            </h3>
+          </div>
+          <div class="space-y-md">
+            <!-- Item Name -->
+            <div>
+              <label class="block font-label-md text-label-md text-text-primary mb-xs" for="item-name">Item Name <span class="text-error">*</span></label>
+              <input class="form-input w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm px-md bg-surface transition-shadow" id="item-name" placeholder="e.g., MacBook Pro, Water Bottle" type="text"/>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+              <!-- Category -->
+              <div>
+                <label class="block font-label-md text-label-md text-text-primary mb-xs" for="category">Category <span class="text-error">*</span></label>
+                <select class="form-select w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm pl-md pr-10 bg-surface appearance-none" id="category">
+                  <option disabled="" selected="" value="">Select category</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="clothing">Clothing &amp; Accessories</option>
+                  <option value="keys">Keys &amp; ID Cards</option>
+                  <option value="books">Books &amp; Stationery</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <!-- Color -->
+              <div>
+                <label class="block font-label-md text-label-md text-text-primary mb-xs" for="color">Primary Color</label>
+                <select class="form-select w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm px-md bg-surface" id="color">
+                  <option disabled="" selected="" value="">Select color</option>
+                  <option value="black">Black</option>
+                  <option value="white">White</option>
+                  <option value="silver">Silver/Grey</option>
+                  <option value="blue">Blue</option>
+                  <option value="red">Red</option>
+                </select>
+              </div>
+            </div>
+            <!-- Location -->
+            <div>
+              <label class="block font-label-md text-label-md text-text-primary mb-xs" for="location">Last Seen Location <span class="text-error">*</span></label>
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-text-secondary">location_on</span>
+                <select class="form-select w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm pl-xl pr-md bg-surface" id="location">
+                  <option disabled="" selected="" value="">Where did you likely lose it?</option>
+                  <option value="lib">Main Library</option>
+                  <option value="eng">Engineering Building</option>
+                  <option value="stu">Student Union</option>
+                  <option value="gym">Campus Recreation Center</option>
+                  <option value="out">Outdoor Campus Grounds</option>
+                </select>
+              </div>
+            </div>
+            <!-- Date Picker -->
+            <div>
+              <label class="block font-label-md text-label-md text-text-primary mb-xs" for="date-lost">Date Lost <span class="text-error">*</span></label>
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-text-secondary">calendar_today</span>
+                <input class="form-input w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm pl-xl pr-md bg-surface" id="date-lost" type="date"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right Column: Item Details & Photo -->
+        <div class="space-y-lg">
+          <div>
+            <h3 class="font-headline-sm text-headline-sm text-text-primary border-b border-border-light pb-sm mb-md flex items-center gap-sm">
+              <span class="material-symbols-outlined text-primary-container">manage_search</span>
+              Specific Details
+            </h3>
+          </div>
+          <div class="space-y-md">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+              <!-- Brand -->
+              <div>
+                <label class="block font-label-md text-label-md text-text-primary mb-xs" for="brand">Brand / Maker</label>
+                <input class="form-input w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm px-md bg-surface" id="brand" placeholder="e.g., Apple, Hydro Flask" type="text"/>
+              </div>
+              <!-- Model -->
+              <div>
+                <label class="block font-label-md text-label-md text-text-primary mb-xs" for="model">Model</label>
+                <input class="form-input w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm px-md bg-surface" id="model" placeholder="e.g., M2 Air, 32oz Wide Mouth" type="text"/>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+              <!-- Serial Number -->
+              <div>
+                <label class="block font-label-md text-label-md text-text-primary mb-xs" for="serial">Serial Number / ID</label>
+                <div class="relative">
+                  <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-text-secondary text-[20px]">pin</span>
+                  <input class="form-input w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm pl-xl pr-md bg-surface" id="serial" placeholder="If applicable" type="text"/>
+                </div>
+                <p class="text-xs text-text-secondary mt-1">Highly recommended for electronics.</p>
+              </div>
+              <!-- Value Estimation -->
+              <div>
+                <label class="block font-label-md text-label-md text-text-primary mb-xs" for="value">Estimated Value</label>
+                <div class="relative">
+                  <span class="absolute left-md top-1/2 -translate-y-1/2 text-text-secondary font-body-md">$</span>
+                  <input class="form-input w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm pl-xl pr-md bg-surface" id="value" placeholder="0.00" type="number"/>
+                </div>
+              </div>
+            </div>
+            <!-- Photo Upload Dropzone -->
+            <div>
+              <label class="block font-label-md text-label-md text-text-primary mb-xs">Reference Photo</label>
+              <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-border-light border-dashed rounded-xl hover:border-primary-container hover:bg-surface-container-low transition-colors group cursor-pointer">
+                <div class="space-y-1 text-center">
+                  <span class="material-symbols-outlined text-4xl text-text-secondary group-hover:text-primary-container transition-colors mb-2">add_photo_alternate</span>
+                  <div class="flex text-sm text-text-secondary justify-center">
+                    <label class="relative cursor-pointer bg-transparent rounded-md font-label-md text-primary-container hover:text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary" for="file-upload">
+                      <span>Upload a file</span>
+                      <input class="sr-only" id="file-upload" name="file-upload" type="file"/>
+                    </label>
+                    <p class="pl-1">or drag and drop</p>
+                  </div>
+                  <p class="text-xs text-text-secondary">PNG, JPG, GIF up to 10MB</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom Full Width: Description -->
+      <div class="mt-xl pt-lg border-t border-border-light">
+        <label class="block font-label-md text-label-md text-text-primary mb-xs" for="description">Detailed Description <span class="text-error">*</span></label>
+        <p class="text-sm text-text-secondary mb-2">Describe distinct features, scratches, stickers, or specific contents (if a bag/wallet).</p>
+        <div class="relative">
+          <textarea class="form-textarea w-full rounded-lg border-border-light focus:border-primary-container focus:ring-0 text-body-md py-sm px-md bg-surface resize-y" id="description" placeholder="e.g., Black laptop sleeve with a 'Space Camp' sticker on the front. Contains a notebook and two black pens inside." rows="4"></textarea>
+          <div class="absolute bottom-2 right-2 text-xs text-text-secondary font-label-sm bg-surface px-1">
+            <span id="char-count">0</span> / 500
+          </div>
+        </div>
+      </div>
+      <!-- Action Buttons -->
+      <div class="mt-xl pt-md flex items-center justify-end gap-md">
+        <button class="bg-surface-container-highest text-text-primary font-label-md text-label-md py-2 px-6 rounded-lg hover:bg-border-light transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border-light" type="button">
+          Cancel
+        </button>
+        <button class="bg-primary-container text-on-primary font-label-md text-label-md py-2 px-8 rounded-lg hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-sm flex items-center gap-sm" type="submit">
+          Submit Report
+          <span class="material-symbols-outlined text-[18px]">send</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</main>
+<script>
+  // Simple character counter for description
+  const textarea = document.getElementById('description');
+  const charCount = document.getElementById('char-count');
+  const maxLength = 500;
+
+  if (textarea && charCount) {
+    textarea.addEventListener('input', function() {
+      const currentLength = this.value.length;
+      charCount.textContent = currentLength;
+
+      if (currentLength > maxLength) {
+        this.value = this.value.substring(0, maxLength);
+        charCount.textContent = maxLength;
+        charCount.classList.add('text-error');
+      } else {
+        charCount.classList.remove('text-error');
+      }
+    });
+  }
+</script>
+</body>
+</html>

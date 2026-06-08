@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.campus.lostfound.controller.ReportLostItemController" 
+      spacing="16" style="-fx-padding: 30px; -fx-background-color: #f9f9ff;" prefWidth="800.0" prefHeight="650.0">
+    
+    <children>
+        <VBox spacing="4">
+            <Label text="Report a Lost Item" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #111827;"/>
+            <Label text="Provide detailed information to help our matching engine search for matches." style="-fx-text-fill: #6B7280;"/>
+        </VBox>
+        
+        <Separator />
+        
+        <GridPane hgap="16" vgap="12">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="50" />
+            </columnConstraints>
+            
+            <children>
+                <!-- Item Name -->
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Item Name *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="itemNameField" promptText="e.g. MacBook Pro, Blue Water Bottle" />
+                </VBox>
+                
+                <!-- Category -->
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Category *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <ComboBox fx:id="categoryComboBox" promptText="Select Category" maxWidth="Infinity">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Electronics" />
+                                <String fx:value="Clothing" />
+                                <String fx:value="Keys &amp; IDs" />
+                                <String fx:value="Books &amp; Stationery" />
+                                <String fx:value="Other" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
+                
+                <!-- Color -->
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Primary Color" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <ComboBox fx:id="colorComboBox" promptText="Select Color" maxWidth="Infinity">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Black" />
+                                <String fx:value="White" />
+                                <String fx:value="Silver" />
+                                <String fx:value="Blue" />
+                                <String fx:value="Red" />
+                                <String fx:value="Other" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
+                
+                <!-- Last Seen Location -->
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Last Seen Location *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="locationField" promptText="e.g. Main Library, Room 204" />
+                </VBox>
+                
+                <!-- Date Lost -->
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Label text="Date Lost *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <DatePicker fx:id="dateLostPicker" maxWidth="Infinity" />
+                </VBox>
+                
+                <!-- Estimated Value -->
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <Label text="Estimated Value ($)" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="estimatedValueField" promptText="e.g. 150.00" />
+                </VBox>
+                
+                <!-- Brand -->
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <Label text="Brand / Maker" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="brandField" promptText="e.g. Apple, Sony" />
+                </VBox>
+                
+                <!-- Serial Number -->
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <Label text="Serial Number / Unique ID" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+                    <TextField fx:id="serialField" promptText="Recommended for electronics" />
+                </VBox>
+            </children>
+        </GridPane>
+        
+        <!-- Description -->
+        <VBox spacing="4">
+            <Label text="Detailed Description *" style="-fx-font-weight: bold; -fx-text-fill: #111827;"/>
+            <TextArea fx:id="descriptionArea" promptText="Describe distinct features, stickers, scratches, or contents inside..." prefHeight="80.0" wrapText="true"/>
+        </VBox>
+        
+        <!-- Photo Paths / Upload mock -->
+        <HBox spacing="16" alignment="CENTER_LEFT">
+            <Button text="Add Reference Photo" onAction="#handleUploadPhoto" styleClass="button-secondary"/>
+            <Label fx:id="lblPhotoStatus" text="No photo attached (Optional)" style="-fx-text-fill: #6B7280;"/>
+        </HBox>
+        
+        <!-- Actions -->
+        <HBox spacing="12" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+            <Button text="Save Draft" onAction="#handleSaveDraft" styleClass="button-secondary" />
+            <Button text="Submit Report" onAction="#handleSubmit" styleClass="button-primary" style="-fx-background-color: #EF4444; -fx-text-fill: white;" />
+        </HBox>
+    </children>
+</VBox>
