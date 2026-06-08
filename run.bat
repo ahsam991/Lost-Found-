@@ -1,7 +1,7 @@
 @echo off
-title Smart Campus Lost & Found Launcher
+title Smart Campus Lost ^& Found Launcher
 echo ===================================================
-echo     Smart Campus Lost & Found Management System
+echo     Smart Campus Lost ^& Found Management System
 echo ===================================================
 echo.
 
